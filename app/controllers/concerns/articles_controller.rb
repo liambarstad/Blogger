@@ -1,0 +1,3 @@
+class ArticleController < ArticleController
+
+end

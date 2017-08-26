@@ -1,3 +1,6 @@
+require 'capybara/rails'
+require 'capybara/rspec'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -39,4 +42,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+end
+require 'rspec/rails'
+RSpec.configure do |config|
+  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  # config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.use_transactional_fixtures = true
+  config.infer_base_class_for_anonymous_controllers = false
+  config.order = "random"
+  # Include path helpers
+  config.include Rails.application.routes.url_helpers
+
+  config.include Capybara::DSL
+
 end

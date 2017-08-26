@@ -1,3 +1,6 @@
+require 'capybara/rails'
+require 'capybara/rspec'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -11,6 +14,7 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+  # config.include Capybara::DSL
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
@@ -51,4 +55,17 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+end
+require 'rspec/rails'
+RSpec.configure do |config|
+  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  # config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.use_transactional_fixtures = true
+  config.infer_base_class_for_anonymous_controllers = false
+  config.order = "random"
+  # Include path helpers
+  config.include Rails.application.routes.url_helpers
+
+  config.include Capybara::DSL
+
 end
