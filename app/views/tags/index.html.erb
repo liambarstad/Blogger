@@ -1,0 +1,8 @@
+<h1>All Tags</h1>
+<h3><%= flash.notice %></h3>
+<% @tags.each do |tag| %>
+<ul>
+  <li><%= link_to tag.name, tag_page(@tag) %></li>
+  <li><%= tag.articles.count %> articles</li>
+</ul>
+<% end %>

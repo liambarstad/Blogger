@@ -22,7 +22,7 @@ class ArticlesController < ActionController::Base
   def edit
   end
 
-  def delete
+  def destroy
     @article.destroy
     flash.notice = "#{article_params[:title]} deleted"
     redirect_to articles_path
@@ -37,7 +37,7 @@ class ArticlesController < ActionController::Base
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :tag_list)
   end
 
   def set_article
