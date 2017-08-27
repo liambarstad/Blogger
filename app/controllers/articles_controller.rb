@@ -1,5 +1,9 @@
 class ArticlesController < ActionController::Base
   def index
-    @article = Article.all
+    @articles = Article.all
+  end
+
+  def show
+    @article = Article.find(params[:id])
   end
 end
